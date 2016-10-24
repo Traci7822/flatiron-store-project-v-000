@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
   # def current_user
   #   binding.pry
   # end
-  #  def current_cart
-  #    binding.pry
-  #  end
+  # def current_cart
+  #   current_user.current_cart
+  # end
 
 end

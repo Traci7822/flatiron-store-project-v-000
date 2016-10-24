@@ -5,12 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :carts
+  has_one :current_cart, class_name: 'Cart'
 
-  def current_cart
-    @cart
-  end
-
-  def current_cart=(cart)
-    @cart = cart
+  def remove_cart
+    self.update(current_cart: nil)
+    self.save
   end
 end

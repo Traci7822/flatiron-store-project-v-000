@@ -8,7 +8,7 @@ describe 'Feature Test: Category', :type => :feature do
     end
 
     it "Lists Category Title" do
-      expect(page).to have_content @category.title
+      expect(page).to have_content(@category.title)
     end
     it "lists all of the items in that category" do
       @items.each do |item|

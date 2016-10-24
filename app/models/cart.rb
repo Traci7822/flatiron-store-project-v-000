@@ -3,7 +3,11 @@ class Cart < ActiveRecord::Base
   has_many :items, through: :line_items
 
   def total
-    self.items.map{|item| item.price}.sum
+    totals = self.line_items.map do |line_item|
+      line_item.item.price * line_item.quantity
+    end
+    totals.sum
+    #self.items.map{|item| item.price}.sum
   end
 
   def add_item(item)
@@ -15,6 +19,16 @@ class Cart < ActiveRecord::Base
     end
     line_item
   end
+
+  def checkout
+    self.line_items.each do |line_item|
+      item = Item.find(line_item.item_id)
+      item.inventory -= line_item.quantity
+      item.save
+    end
+    self.update(status: "submitted")
+  end
+
 
 
 end
