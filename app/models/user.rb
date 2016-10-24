@@ -6,12 +6,11 @@ class User < ActiveRecord::Base
 
   has_many :carts
 
-  def cart
-    binding.pry
+  def current_cart
+    @cart
   end
 
-  def current_carts
-    binding.pry
+  def current_cart=(cart)
+    @cart = cart
   end
-
 end
