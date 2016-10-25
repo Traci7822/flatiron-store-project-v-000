@@ -1,6 +1,6 @@
 <nav class="">
     <ul align="left", style="background-color: blue">
-        <li><h4> <%= link_to "Store Home", store_path %> </h4></li>
+        <h2 align="center"> <%= link_to "Store Home", store_path %> </h2>
         <% if !user_signed_in? %>
           <li><h4><%= link_to "sign in", new_user_session_path %></h4></li>
           <li><h4><%= link_to "Sign up", new_user_registration_path %></h4></li>
