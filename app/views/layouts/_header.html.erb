@@ -1,16 +1,19 @@
 <nav class="">
-    <ul>
-        <li> <%= link_to "Store Home", store_path %> </li>
-        <li><%= link_to "sign in", new_user_session_path %></li>
-        <li><%= link_to "Sign up", new_user_registration_path %></li>
-        <% if !!@cart %>
-          <li> <%= link_to "Cart", checkout_path %></li>
+    <ul align="left", style="background-color: blue">
+        <li><h4> <%= link_to "Store Home", store_path %> </h4></li>
+        <% if !user_signed_in? %>
+          <li><h4><%= link_to "sign in", new_user_session_path %></h4></li>
+          <li><h4><%= link_to "Sign up", new_user_registration_path %></h4></li>
         <% end %>
-    </ul>
+        <% if @cart %>
+          <li><h4> <%= link_to "Cart", checkout_path %></h4></li>
+        <% end %>
 
     <% if user_signed_in? %>
-      <h3>Signed in as <%= current_user.email %></h3>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <li><h4><%= link_to "Sign out", destroy_user_session_path, method: :delete %></h4></li>
+    </ul>
+      <h4 align="center", style="background-color: yellow; padding: 30px">Signed in as <%= current_user.email %></h4>
+
     <% end %>
 
 </nav>
